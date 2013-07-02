@@ -563,11 +563,11 @@ public class RIL extends BaseCommands implements CommandsInterface {
 
 		/* Qualcomm Multi-SIM SUB init support */
 		// We assume all devices need this (OpenSEMC)
-		String str = "SUB1";
-		Log.i(LOG_TAG, "Sending  SUB data : " + str);
-		byte[] data = str.getBytes();
+		String str_dup = "SUB1";
+		Log.i(LOG_TAG, "Sending  SUB data : " + str_dup);
+		byte[] data_dup = str_dup.getBytes();
 		try {
-		  mSocket.getOutputStream().write(data);
+		  mSocket.getOutputStream().write(data_dup);
 		  Log.i(LOG_TAG, "Data sent!!");
 		} catch (IOException ex) {
 		  Log.e(LOG_TAG, "IOException", ex);
