@@ -23,7 +23,7 @@ import android.os.AsyncResult;
 import android.os.Message;
 import android.os.Parcel;
 import android.text.TextUtils;
-import android.util.Log;
+import android.telephony.Rlog;
 import java.util.ArrayList;
 
 /*
@@ -58,7 +58,7 @@ public class SonyQualcommRIL extends QualcommSharedRIL implements CommandsInterf
         rr = findAndRemoveRequestFromList(serial);
 
         if (rr == null) {
-            Log.w(LOG_TAG, "Unexpected solicited response! sn: "
+            Rlog.w(RILJ_LOG_TAG, "Unexpected solicited response! sn: "
                             + serial + " error: " + error);
             return;
         }
@@ -189,7 +189,7 @@ public class SonyQualcommRIL extends QualcommSharedRIL implements CommandsInterf
             }} catch (Throwable tr) {
                 // Exceptions here usually mean invalid RIL responses
 
-                Log.w(LOG_TAG, rr.serialString() + "< "
+                Rlog.w(RILJ_LOG_TAG, rr.serialString() + "< "
                         + requestToString(rr.mRequest)
                         + " exception, possible invalid RIL response", tr);
 
@@ -275,7 +275,7 @@ public class SonyQualcommRIL extends QualcommSharedRIL implements CommandsInterf
                 RILConstants.RIL_REQUEST_CDMA_GET_SUBSCRIPTION_SOURCE, response);
 
         if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
-        Log.d(LOG_TAG, "RIL_REQUEST_CDMA_GET_SUBSCRIPTION_SOURCE blocked!!!");
+        Rlog.d(RILJ_LOG_TAG, "RIL_REQUEST_CDMA_GET_SUBSCRIPTION_SOURCE blocked!!!");
         //send(rr);
     }
 
